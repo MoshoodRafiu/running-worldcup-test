@@ -15,6 +15,19 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->float('distance');
+            $table->integer('moving_time');
+            $table->integer('elapsed_time');
+            $table->float('total_elevation_gain');
+            $table->string('type');
+            $table->string('sport_type');
+            $table->dateTime('start_date');
+            $table->integer('kudos_count');
+            $table->float('average_speed');
+            $table->float('max_speed');
+            $table->text('description')->nullable();
+            $table->integer('calories');
             $table->timestamps();
         });
     }
