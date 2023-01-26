@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Http;
 
 class SubscriptionService
 {
+    /**
+     * Create webhook subscription
+     *
+     * @return void
+     */
     public function createWebhookSubscription()
     {
         $response = Http::post(config('strava.base_url').'push_subscriptions', [
@@ -25,6 +30,12 @@ class SubscriptionService
         abort(400, 'There was an error completing your subscription');
     }
 
+    /**
+     * Validate webhook subscription
+     *
+     * @param array $payload
+     * @return void
+     */
     public function validateWebhookSubscription(array $payload)
     {
         if (config('strava.verification_token') !== $payload['hub_verify_token']) {
