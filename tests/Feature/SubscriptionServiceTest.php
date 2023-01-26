@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 
-class SubscriptionTest extends TestCase
+class SubscriptionServiceTest extends TestCase
 {
     protected SubscriptionService $subscriptionService;
 
