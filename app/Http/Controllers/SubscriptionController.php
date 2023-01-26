@@ -20,7 +20,8 @@ class SubscriptionController extends Controller
      */
     public function initiate()
     {
-        $this->subscriptionService->createWebhookSubscription();
+        $data = $this->subscriptionService->createWebhookSubscription();
+        return response()->json($data);
     }
 
     /**
@@ -31,6 +32,7 @@ class SubscriptionController extends Controller
      */
     public function validateSubscription(Request $request)
     {
-        $this->subscriptionService->validateWebhookSubscription($request->all());
+        $data = $this->subscriptionService->validateWebhookSubscription($request->all());
+        return response()->json($data);
     }
 }
