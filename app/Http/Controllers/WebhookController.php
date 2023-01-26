@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Log;
 
 class WebhookController extends Controller
 {
+    /**
+     * process the webhook request
+     *
+     * @param Request $request
+     * @return void
+     */
     public function process(Request $request)
     {
         if ($request['object_type'] === 'activity') {

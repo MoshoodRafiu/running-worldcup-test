@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->integer('starva_id');
             $table->string('name');
             $table->float('distance');
             $table->integer('moving_time');
