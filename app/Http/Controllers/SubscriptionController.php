@@ -40,6 +40,9 @@ class SubscriptionController extends Controller
      */
     public function validateSubscription(Request $request)
     {
+        if (config('strava.verification_token') !== $request['hub_verify_token']) {
+            abort(403, 'Invalid verification token');
+        }
         return response()->json([
             'hub.challenge' => $request['hub_challenge']
         ]);
