@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/subscribe', [SubscriptionController::class, 'initiate']);
-
-Route::get('/webhook',    [SubscriptionController::class, 'validateSubscription']);
-Route::post('/webhook',   [WebhookController::class,      'process']);
+Route::prefix('/strava')->group(function () {
+    Route::controller(SubscriptionController::class)->group(function () {
+        Route::post('/subscribe', 'initiate');
+        Route::get('/webhook',    'validateSubscription');
+    });
+    Route::post('/webhook',   [WebhookController::class, 'process']);
+});
