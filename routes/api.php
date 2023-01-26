@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/subscribe', [SubscriptionController::class, 'initiate']);
 
-Route::get('/webhook', [SubscriptionController::class, 'validateSubscription']);
+Route::get('/webhook',    [SubscriptionController::class, 'validateSubscription']);
+Route::post('/webhook',   [WebhookController::class,      'process']);

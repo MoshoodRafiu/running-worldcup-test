@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
 
 class SubscriptionController extends Controller
 {
+    /**
+     * Initiates a new subscription in strava
+     *
+     * @return void|JsonResponse
+     */
     public function initiate()
     {
         $response = Http::post(config('strava.base_url').'push_subscriptions', [
@@ -26,6 +32,12 @@ class SubscriptionController extends Controller
         abort(400, 'There was an error completing your subscription');
     }
 
+    /**
+     * Validates the strava subscription
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function validateSubscription(Request $request)
     {
         return response()->json([
